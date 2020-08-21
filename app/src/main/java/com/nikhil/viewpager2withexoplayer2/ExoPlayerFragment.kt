@@ -7,9 +7,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.source.LoopingMediaSource
 import com.google.android.exoplayer2.source.MediaSource
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.util.Util
@@ -51,11 +53,13 @@ class ExoPlayerFragment(
             mediaDataSourceFactory as DefaultDataSourceFactory
         )
 
-        simpleExoPlayer.prepare(mediaSource)
+        val loopingSource = LoopingMediaSource(mediaSource)
+        simpleExoPlayer.prepare(loopingSource)
 
+        viewBinding!!.playerView.useController = false
+        viewBinding!!.playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
+        viewBinding!!.playerView.setRepeatToggleModes(Player.REPEAT_MODE_ALL)
         viewBinding!!.playerView.player = simpleExoPlayer
-        viewBinding!!.playerView.useController = true
-        viewBinding!!.playerView.setRepeatToggleModes(Player.REPEAT_MODE_ONE)
     }
 
     private fun buildMediaSource(
@@ -81,6 +85,16 @@ class ExoPlayerFragment(
 
     override fun onResume() {
         super.onResume()
+        Log.d(TAG, "onResume: $positionOfFragment")
+        if (viewBinding != null) {
+            viewBinding!!.playerView.player!!.playWhenReady =
+                !viewBinding!!.playerView.player!!.isPlaying
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause: $positionOfFragment")
         if (viewBinding != null) {
             viewBinding!!.playerView.player!!.playWhenReady =
                 !viewBinding!!.playerView.player!!.isPlaying
