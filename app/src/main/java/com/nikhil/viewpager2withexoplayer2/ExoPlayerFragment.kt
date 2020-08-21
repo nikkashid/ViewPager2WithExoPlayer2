@@ -79,8 +79,8 @@ class ExoPlayerFragment(
         viewBinding = null
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onResume() {
+        super.onResume()
         if (viewBinding != null) {
             viewBinding!!.playerView.player!!.playWhenReady =
                 !viewBinding!!.playerView.player!!.isPlaying
