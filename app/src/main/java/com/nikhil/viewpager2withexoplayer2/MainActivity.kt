@@ -33,10 +33,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initializeList() {
         videoList = ArrayList()
-        //videoList.add("https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4")
+        videoList.add("https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4")
         videoList.add("asset:///dummy_video.mp4")
-        //videoList.add("https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4")
+        videoList.add("https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4")
         videoList.add("asset:///dummy_video.mp4")
-        //videoList.add("https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4")
+        videoList.add("https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4")
     }
 }
