@@ -1,4 +1,4 @@
-package com.nikhil.viewpager2withexoplayer2
+package com.nikhil.viewpager2withexoplayer2.fragment
 
 import android.net.Uri
 import android.os.Bundle
@@ -16,7 +16,13 @@ import com.google.android.exoplayer2.source.hls.HlsMediaSource
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout
 import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.upstream.cache.CacheDataSource
+import com.google.android.exoplayer2.upstream.cache.CacheDataSourceFactory
+import com.google.android.exoplayer2.upstream.cache.SimpleCache
 import com.google.android.exoplayer2.util.Util
+import com.nikhil.viewpager2withexoplayer2.R
+import com.nikhil.viewpager2withexoplayer2.activity.MainActivity
+import com.nikhil.viewpager2withexoplayer2.application.ExoPlayerCaching
 import com.nikhil.viewpager2withexoplayer2.databinding.FragmentExoPlayerBinding
 
 class ExoPlayerFragment(
@@ -34,6 +40,8 @@ class ExoPlayerFragment(
     private lateinit var mediaDataSourceFactory: DataSource.Factory
 
     private val positionOfFragment = position
+
+    private lateinit var simpleCache: SimpleCache
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -57,6 +65,9 @@ class ExoPlayerFragment(
     }
 
     private fun initializePlayer() {
+
+        simpleCache = ExoPlayerCaching.simpleCache!!
+
         simpleExoPlayer = SimpleExoPlayer.Builder(activity).build()
         val userAgent = Util.getUserAgent(activity, activity.getPackageName())
         mediaDataSourceFactory =
@@ -83,13 +94,18 @@ class ExoPlayerFragment(
         mediaDataSourceFactory: DefaultDataSourceFactory
     ): MediaSource {
 
+        //adding caching
+        val cacheDataSourceFactory = CacheDataSourceFactory(
+            simpleCache, mediaDataSourceFactory, CacheDataSource.FLAG_IGNORE_CACHE_ON_ERROR
+        )
+
         // This is the MediaSource representing the media to be played.
         val extension: String = uri.toString().substring(uri.toString().lastIndexOf("."))
         if (extension.contains("mp4")) {
-            return ProgressiveMediaSource.Factory(mediaDataSourceFactory)
+            return ProgressiveMediaSource.Factory(cacheDataSourceFactory)
                 .createMediaSource(uri)
         } else {
-            return HlsMediaSource.Factory(mediaDataSourceFactory)
+            return HlsMediaSource.Factory(cacheDataSourceFactory)
                 .createMediaSource(uri)
         }
     }

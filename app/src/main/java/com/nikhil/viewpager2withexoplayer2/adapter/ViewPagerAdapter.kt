@@ -1,7 +1,9 @@
-package com.nikhil.viewpager2withexoplayer2
+package com.nikhil.viewpager2withexoplayer2.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.nikhil.viewpager2withexoplayer2.activity.MainActivity
+import com.nikhil.viewpager2withexoplayer2.fragment.ExoPlayerFragment
 
 class ViewPagerAdapter(
     private val activity: MainActivity,

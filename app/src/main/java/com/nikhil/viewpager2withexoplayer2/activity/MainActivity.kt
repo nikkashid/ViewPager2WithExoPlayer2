@@ -1,4 +1,4 @@
-package com.nikhil.viewpager2withexoplayer2
+package com.nikhil.viewpager2withexoplayer2.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -11,6 +11,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.nikhil.viewpager2withexoplayer2.R
+import com.nikhil.viewpager2withexoplayer2.adapter.ViewPagerAdapter
 import com.nikhil.viewpager2withexoplayer2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

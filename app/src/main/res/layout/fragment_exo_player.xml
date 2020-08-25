@@ -4,7 +4,7 @@
     android:id="@+id/fl_mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExoPlayerFragment">
+    tools:context=".fragment.ExoPlayerFragment">
 
     <com.google.android.exoplayer2.ui.PlayerView
         android:id="@+id/playerView"
@@ -16,8 +16,8 @@
         android:id="@+id/iv_pauseVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_gravity="center"
+        android:contentDescription="@string/image_to_show_play_icon"
         android:padding="100dp"
         android:src="@drawable/ic_play_big"
         android:visibility="gone" />
