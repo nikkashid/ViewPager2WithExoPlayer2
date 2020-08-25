@@ -81,6 +81,7 @@ class ExoPlayerFragment(
     override fun onDestroyView() {
         super.onDestroyView()
         viewBinding = null
+        simpleExoPlayer.release()
     }
 
     override fun onResume() {
