@@ -4,6 +4,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.fragment.app.Fragment
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -38,6 +40,20 @@ class ExoPlayerFragment(
         viewBinding = FragmentExoPlayerBinding.bind(view)
         Log.d(TAG, "onViewCreated: Fragment Position : $positionOfFragment")
         initializePlayer()
+        initTouchEvent()
+    }
+
+    private fun initTouchEvent() {
+        viewBinding!!.flMainLayout.setOnClickListener {
+            viewBinding!!.playerView.player!!.playWhenReady =
+                !viewBinding!!.playerView.player!!.isPlaying
+
+            if (viewBinding!!.playerView.player!!.isPlaying) {
+                viewBinding!!.ivPauseVideo.visibility = GONE
+            } else {
+                viewBinding!!.ivPauseVideo.visibility = VISIBLE
+            }
+        }
     }
 
     private fun initializePlayer() {

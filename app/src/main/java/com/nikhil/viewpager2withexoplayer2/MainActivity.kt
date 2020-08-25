@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
         videoList.add("asset:///dummy_video.mp4")
         videoList.add("/storage/emulated/0/snaptube/download/SnapTube Video/OpMs_ Corazon on Instagram_ _please fallow me if y(MP4).mp4")
         videoList.add("/storage/emulated/0/snaptube/download/SnapTube Video/Facebook undefined(480p)_1.mp4")
+        videoList.add("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
         videoList.add("/storage/emulated/0/snaptube/download/SnapTube Video/THE INDIAN SARCASM®️ on Instagram_ _------------__(MP4).mp4")
         videoList.add("/storage/emulated/0/snaptube/download/SnapTube Video/Facebook 1743407759166692(270p).mp4")
     }
