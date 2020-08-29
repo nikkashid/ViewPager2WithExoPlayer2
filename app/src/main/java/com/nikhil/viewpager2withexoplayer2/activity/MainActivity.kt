@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         )
 
         if (permission != PackageManager.PERMISSION_GRANTED) {
-            Log.i(TAG, "Permission to read storage denied")
+            Log.i(TAG, getString(R.string.permission_denied))
             makeRequest()
         } else {
             initViewPagerView()
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                     mainViewBinding.btnReqPermission.visibility = View.VISIBLE
                 } else {
-                    Log.i(TAG, "Permission has been granted by user")
+                    Log.i(TAG, getString(R.string.permission_granted))
                     mainViewBinding.btnReqPermission.visibility = View.GONE
                     initViewPagerView()
                 }
@@ -94,11 +94,11 @@ class MainActivity : AppCompatActivity() {
     private fun initializeList() {
         videoList = ArrayList()
 
-        videoList.add("asset:///dummy_video.mp4")
-        videoList.add("/storage/emulated/0/snaptube/download/SnapTube Video/OpMs_ Corazon on Instagram_ _please fallow me if y(MP4).mp4")
-        videoList.add("/storage/emulated/0/snaptube/download/SnapTube Video/Facebook undefined(480p)_1.mp4")
-        videoList.add("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
-        videoList.add("/storage/emulated/0/snaptube/download/SnapTube Video/THE INDIAN SARCASM®️ on Instagram_ _------------__(MP4).mp4")
-        videoList.add("/storage/emulated/0/snaptube/download/SnapTube Video/Facebook 1743407759166692(270p).mp4")
+        videoList.add(getString(R.string.video_path1))
+        videoList.add(getString(R.string.video_path2))
+        videoList.add(getString(R.string.video_path3))
+        videoList.add(getString(R.string.video_path4))
+        videoList.add(getString(R.string.video_path5))
+        videoList.add(getString(R.string.video_path6))
     }
 }

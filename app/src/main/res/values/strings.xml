@@ -4,4 +4,14 @@
     <string name="request_permission">Storage permission is required to get the videos from storage.</string>
     <string name="request_storage_permission">Request Storage Permission</string>
     <string name="image_to_show_play_icon">Image to show play icon.</string>
+    <string name="permission_granted">Permission has been granted by user</string>
+    <string name="permission_denied">Permission to read storage denied</string>
+
+    <string name="video_path1">asset:///dummy_video.mp4</string>
+    <string name="video_path2">/storage/emulated/0/snaptube/download/SnapTube Video/OpMs_ Corazon on Instagram_ _please fallow me if y(MP4).mp4</string>
+    <string name="video_path3">/storage/emulated/0/snaptube/download/SnapTube Video/Facebook undefined(480p)_1.mp4</string>
+    <string name="video_path4">http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4</string>
+    <string name="video_path5">/storage/emulated/0/snaptube/download/SnapTube Video/THE INDIAN SARCASM®️ on Instagram_ _------------__(MP4).mp4</string>
+    <string name="video_path6">/storage/emulated/0/snaptube/download/SnapTube Video/Facebook 1743407759166692(270p).mp4</string>
+
 </resources>
